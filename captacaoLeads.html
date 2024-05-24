@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captação de Leads</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img src="https://i.im.ge/2024/05/25/KselmG.landingPage.jpeg" alt="Logo da Empresa"> 
+        <h1>Bem-vindo à Select</h1>
+        <button class="back-button" onclick="window.location.href = 'landingPage.html';">&#x21A9;</button>
+    </header>
+    <section class="lead-generation">
+        <h2>Preencha os campos abaixo:</h2>
+        <form action="#" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Telefone:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Todos os dados fornecidos serão tratados de forma 
+            confidencial e não serão publicados ou compartilhados com terceiros
+             sem sua autorização prévia. Respeitamos integralmente os direitos
+             autorais e propriedade intelectual de todos os materiais 
+             utilizados neste site. Se você acredita que seus direitos 
+             autorais foram violados de alguma forma, entre em contato conosco
+              para que possamos resolver a situação de forma rápida e eficiente.</p>
+    </footer>
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    .back-button {
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        color: #fff;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        position: absolute;
+        right: 20px; 
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .back-button:hover {
+        transform: translateY(-50%) scale(1.2);
+    }
+
+    header img { 
+        position: absolute;
+        left: 20px; 
+        top: 20px; 
+        width: 100px; 
+        height: auto; 
+    }
+
+    section {
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 800px;
+    }
+
+    h1 {
+        color: #fff;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"] {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    form button {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        position: fixed; 
+        bottom: 0; 
+        width: 100%;
+    }
+</style>
+</html>
