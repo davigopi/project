@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulário de Registro</title>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Registro de Informações Pessoais</h2>
+  <form action="#" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="nascimento">Data de Nascimento:</label>
+    <input type="date" id="nascimento" name="nascimento" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="comentarios">Comentários:</label>
+    <textarea id="comentarios" name="comentarios" required></textarea>
+
+    <input type="submit" value="Registrar">
+  </form>
+</div>
+
+</body>
+<style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+  
+    .form-container {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+  
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .form-container label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    .form-container input[type="text"],
+    .form-container input[type="date"],
+    .form-container input[type="email"],
+    .form-container textarea {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .form-container textarea {
+      resize: vertical;
+      height: 100px;
+    }
+  
+    .form-container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  
+    .form-container input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</html>
