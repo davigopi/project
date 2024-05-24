@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Média Ponderada</title>
+</head>
+<body>
+    <h1>Calculadora de Média Ponderada</h1>
+    <form id="formNotasPesos">
+        <label for="nota1">Nota 1:</label>
+        <input type="number" id="nota1" step="0.1" required><br>
+        <label for="peso1">Peso 1:</label>
+        <input type="number" id="peso1" step="0.1" required><br><br>
+
+        <label for="nota2">Nota 2:</label>
+        <input type="number" id="nota2" step="0.1" required><br>
+        <label for="peso2">Peso 2:</label>
+        <input type="number" id="peso2" step="0.1" required><br><br>
+
+        <label for="nota3">Nota 3:</label>
+        <input type="number" id="nota3" step="0.1" required><br>
+        <label for="peso3">Peso 3:</label>
+        <input type="number" id="peso3" step="0.1" required><br><br>
+
+        <button type="button" onclick="calcularMediaPonderada()">Calcular Média</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script src="calcularMediaPonderada.js"></script>
+</body>
+</html>
