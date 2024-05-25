@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Adicionando cor ao botão "Adicionar" */
+form button {
+    background-color: #4CAF50; 
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #e2e2e2;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.button-group {
+    display: flex;
+    gap: 5px;
+}
+
+button.delete {
+    background: #ff5c5c;
+    color: white;
+}
+
+button.edit {
+    background: #5c85ff; 
+    color: white;
+}
+
+.edited-task {
+    background-color: #5c85ff; 
+}
+
+.returns-task {
+    background-color: #4CAF50; 
+}
