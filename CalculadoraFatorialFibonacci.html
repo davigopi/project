@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Fatorial Fibonacci</title>
+</head>
+<body>
+    <h1>Calculadora Fatorial Fibonacci</h1>
+    <label for="numero">Digite um número inteiro positivo:</label>
+    <input type="number" id="numero">
+    <button onclick="calcular()">Calcular</button>
+    <div id="resultado"></div>
+
+    <script src="CalculadoraFatorialFibonacci.js"></script>
+    <script>
+        function calcular() {
+            const numero = parseInt(document.getElementById('numero').value);
+            const fatorial = calcularFatorial(numero);
+            const fibonacci = calcularFibonacci(numero);
+            
+            document.getElementById('resultado').innerHTML = `
+                <p>Fatorial de ${numero}: ${fatorial}</p>
+                <p>Sequência de Fibonacci até ${numero}: ${fibonacci.join(', ')}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
