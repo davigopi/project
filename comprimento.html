@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de metro(s)</title>
+    <link rel="stylesheet" href="comprimento.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de metro(s)</h1>
+        <label for="distance">Distância em metro(s):</label>
+        <input type="number" id="distance" placeholder="Digite a distância em metro(s)" step="any">
+        <br>
+        <label for="unit">Converter para:</label>
+        <select id="unit">
+            <option value="jardas">Jarda(s)</option>
+            <option value="pes">Pé(s)</option>
+            <option value="polegadas">Polegada(s)</option>
+            <option value="milhas">Milha(s)</option>
+        </select>
+        <br>
+        <button onclick="converter()">Converter</button>
+        <br>
+        <div id="result"></div>
+    </div>
+    <script src="comprimento.js"></script>
+</body>
+</html>
