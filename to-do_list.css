@@ -1,13 +1,16 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #3b3b3b;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .container {
     max-width: 600px;
-    margin: 0 auto;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
@@ -16,32 +19,34 @@ body {
 
 h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .input-wrapper {
     display: flex;
-    justify-content: space-between; /* Coloca os elementos no final da linha */
     align-items: center;
 }
 
-input[type="text"] {
-    width: calc(100% - 80px);
+.input-wrapper input[type="text"] {
+    flex: 1;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    display: inline-block;
 }
 
-button {
+.input-wrapper button {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    display: inline-block;
 }
 
-button:hover {
+.input-wrapper button:hover {
     background-color: #005a03;
 }
 
@@ -51,6 +56,8 @@ ul {
 }
 
 li {
+    display: flex;
+    align-items: center;
     padding: 10px;
     border-bottom: 1px solid #ccc;
 }
@@ -59,12 +66,13 @@ li:last-child {
     border-bottom: none;
 }
 
+.completed {
+    text-decoration: line-through;
+}
+
 .delete-button {
     background: none;
     border: none;
     cursor: pointer;
-}
-
-.delete-button:hover {
-    background-color: #ff0000;
+    margin-left: auto;
 }
