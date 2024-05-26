@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonGroup.classList.add('button-group');
 
         const editButton = document.createElement('button');
-        editButton.textContent = '✏️';  // Emoji de lápis
+        editButton.textContent = '✏️'; 
         editButton.classList.add('edit');
         editButton.addEventListener('click', () => editTask(taskItem));
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = '🗑️';  // Emoji de lixeira
+        deleteButton.textContent = '🗑️'; 
         deleteButton.classList.add('delete');
         deleteButton.addEventListener('click', () => deleteTask(taskItem));
 
