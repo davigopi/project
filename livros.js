@@ -94,6 +94,20 @@ function adicionarLivros() {
     adicionarLivro("Refatoração: Aperfeiçoando o Design de Códigos Existentes", "Martin Fowler", "Programação", 1999, 4.6);
     adicionarLivro("Código Completo", "Steve McConnell", "Engenharia de Software", 2004, 4.7);
     adicionarLivro("Padrões de Projeto com JavaScript", "Addy Osmani", "Programação", 2012, 4.2);
+    adicionarLivro("Artificial Intelligence: A Modern Approach", "Stuart Russell, Peter Norvig", "Inteligência Artificial", 2009, 4.5);
+    adicionarLivro("Deep Learning", "Ian Goodfellow, Yoshua Bengio, Aaron Courville", "Inteligência Artificial", 2016, 4.8);
+    adicionarLivro("Pattern Recognition and Machine Learning", "Christopher M. Bishop", "Inteligência Artificial", 2006, 4.6);
+    adicionarLivro("Machine Learning Yearning", "Andrew Ng", "Inteligência Artificial", 2018, 4.7);
+    adicionarLivro("Don't Make Me Think", "Steve Krug", "Web Design", 2000, 4.6);
+    adicionarLivro("HTML and CSS: Design and Build Websites", "Jon Duckett", "Web Design", 2011, 4.5);
+    adicionarLivro("JavaScript and JQuery: Interactive Front-End Web Development", "Jon Duckett", "Web Design", 2014, 4.6);
+    adicionarLivro("Responsive Web Design with HTML5 and CSS3", "Ben Frain", "Web Design", 2012, 4.4);
+    adicionarLivro("The Pragmatic Programmer", "Andrew Hunt, David Thomas", "Programação", 1999, 4.7);
+    adicionarLivro("The Mythical Man-Month", "Frederick P. Brooks Jr.", "Engenharia de Software", 1975, 4.5);
+    adicionarLivro("The Art of Computer Programming", "Donald E. Knuth", "Ciência da Computação", 1968, 4.9);
+    adicionarLivro("Introduction to the Theory of Computation", "Michael Sipser", "Teoria da Computação", 1996, 4.6);
+    adicionarLivro("Computer Networks", "Andrew S. Tanenbaum, David J. Wetherall", "Redes de Computadores", 2010, 4.7);
+
 }
 
 function exibirLivros() {
