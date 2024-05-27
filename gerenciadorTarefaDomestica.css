@@ -38,9 +38,8 @@ button {
     cursor: pointer;
 }
 
-/* Adicionando cor ao botão "Adicionar" */
 form button {
-    background-color: #4CAF50; 
+    background-color: #45BF55; 
     color: white;
 }
 
@@ -71,14 +70,14 @@ button.delete {
 }
 
 button.edit {
-    background: #5c85ff; 
+    background: #049DBF; 
     color: white;
 }
 
 .edited-task {
-    background-color: #5c85ff; 
+    background-color: #049DBF; 
 }
 
 .returns-task {
-    background-color: #4CAF50; 
+    background-color: #45BF55; 
 }

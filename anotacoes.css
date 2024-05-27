@@ -1,8 +1,12 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #3b3b3b;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://i.im.ge/2024/05/27/K79Ooc.background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -11,7 +15,7 @@ body {
     padding: 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(145, 63, 12, 0.1);
 }
 
 h1 {
@@ -34,7 +38,7 @@ input[type="text"] {
 
 button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #45BF55;
     color: white;
     border: none;
     border-radius: 4px;
@@ -42,7 +46,7 @@ button {
 }
 
 button:hover {
-    background-color: #005a03;
+    background-color: #168039;
 }
 
 ul {
@@ -66,5 +70,5 @@ li:last-child {
 }
 
 .delete-button:hover {
-    background-color: #ff0000;
+    background-color: #DB463B;
 }

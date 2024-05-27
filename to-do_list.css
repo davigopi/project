@@ -1,12 +1,15 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('https://i.im.ge/2024/05/27/K79Ooc.background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -38,7 +41,7 @@ h1 {
 
 .input-wrapper button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #45BF55;
     color: white;
     border: none;
     border-radius: 4px;
@@ -47,7 +50,7 @@ h1 {
 }
 
 .input-wrapper button:hover {
-    background-color: #005a03;
+    background-color: #168039;
 }
 
 ul {
@@ -75,4 +78,7 @@ li:last-child {
     border: none;
     cursor: pointer;
     margin-left: auto;
+}
+.delete-button:hover {
+    background-color: #DB463B;
 }
