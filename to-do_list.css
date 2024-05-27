@@ -78,7 +78,12 @@ li:last-child {
     border: none;
     cursor: pointer;
     margin-left: auto;
+    margin-left: 5px;
 }
 .delete-button:hover {
     background-color: #DB463B;
+}
+.checkbox-list {
+    margin-left: 25px;
+
 }

@@ -11,6 +11,7 @@ function adicionarTarefa() {
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.className = 'checkbox-list';
         checkbox.onchange = function() {
             if (checkbox.checked) {
                 newTaskItem.classList.add('completed');
