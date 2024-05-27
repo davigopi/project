@@ -1,0 +1,124 @@
+/* livros.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 98%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #049DBF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #025373;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  .rating {
+    display: inline-block;
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 20px;
+    position: relative;
+    padding: 0;
+  }
+  
+  .rating > label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .rating > label:hover,
+  .rating > label:hover ~ label,
+  .rating > input:checked ~ label {
+    color: #ffcc00;
+  }
+  
+  .rating > input:checked + label:hover,
+  .rating > input:checked + label:hover ~ label,
+  .rating > input:checked ~ label:hover ~ label,
+  .rating > label:hover ~ input:checked ~ label {
+    color: #ffcc00;
+  }
+  
+  .rating > label:active {
+    position: relative;
+    top: 2px;
+  }
+  
+  .rating > input:checked + label:after,
+  .rating > input:checked ~ label:hover ~ label:after {
+    content: "★";
+    position: absolute;
+    left: 0;
+    color: #ffcc00;
+  }
+
+  #btnBuscar,
+  #btnExcluir,
+  #btnAdicionar {
+    width: 100%;
+    padding: 10px; 
+    background-color: #049DBF; 
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #btnBuscar:hover,
+  #btnExcluir:hover,
+  #btnAdicionar:hover {
+    background-color: #025373;
+  }
+  
