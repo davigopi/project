@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa Eletrônico</title>
+    <link rel="stylesheet" href="caixaEletronico.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Caixa Eletrônico</h1>
+        <textarea id="monitor" readonly></textarea>
+        <div class="form-group">
+            <label for="operacao">Escolha uma operação:</label>
+            <select id="operacao">
+                <option value="saldo">Consultar Saldo</option>
+                <option value="sacar">Sacar</option>
+                <option value="depositar">Depositar</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" min="0">
+        </div>
+        <button id="realizar">Realizar</button>
+    </div>
+    <script src="caixaEletronico.js"></script>
+</body>
+</html>
