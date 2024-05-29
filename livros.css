@@ -1,9 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://i.im.ge/2024/05/27/K79Ooc.background.jpeg');
-    background-size: cover;
+    background-image: url('https://i.im.ge/2024/05/29/KI9nVr.background2.jpeg');
+    background-size: 100%  auto; 
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
   }
   
   .container {
