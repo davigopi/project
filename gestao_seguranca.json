@@ -1,0 +1,20 @@
+{
+    "users": [
+      {
+        "username": "administrador",
+        "password": "administrador123",
+        "permission": "administrador"
+      },
+      {
+        "username": "gerente",
+        "password": "gerente123",
+        "permission": "gerente"
+      },
+      {
+        "username": "funcionario",
+        "password": "funcionario123",
+        "permission": "funcionario"
+      }
+    ]
+  }
+  
