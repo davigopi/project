@@ -3,8 +3,8 @@ document.getElementById('login-form').addEventListener('submit', async function(
   var user = document.getElementById('user').value;
   var password = document.getElementById('password').value;
 
-  // URL do JSON no repositório na web
-  var jsonUrl = 'https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/gestao_seguranca.json';
+  // URL do JSON no GitHub Raw com o proxy CORS
+  var jsonUrl = 'https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/davigopi/project/main/gestao_seguranca.json';
 
   try {
     var response = await fetch(jsonUrl, {
