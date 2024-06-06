@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://i.im.ge/2024/06/06/K675Ur.batman1.jpeg');
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: repeat-y;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+    color: #fff; 
+  }
+
+  header {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  h1 {
+    text-align: center;
+    color: #e2e2e2;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 98%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #000;
+  }
+    
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+
+  button[type="submit"],
+  #btnBuscar,
+  #btnExcluir,
+  #btnAdicionar {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button[type="submit"]:hover,
+  #btnBuscar:hover,
+  #btnExcluir:hover,
+  #btnAdicionar:hover {
+    background-color: #121212;
+    box-shadow: -10px 10px 50px rgba(195, 195, 195, 0.9); 
+    transform: translate(3px, -3px);
+    font-size: 1.2em;
+  }
+
+
+  #logoutButton {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: absolute;
+    right: 20px; 
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #logoutButton:hover {
+    background-color: transparent
+    box-shadow: -10px 10px 50px rgba(195, 195, 195, 0.9); 
+    /* transform: translate(-10px, -7px); */
+    font-size: 1.2em;
+    transform: translateY(-50%) scale(1.5);
+  }
+
+
+  button.delete,
+  button.edit {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    margin-left: 10px;
+  }
+  button.delete:hover,
+  button.edit:hover {
+    box-shadow: -4px 6px 15px rgba(195, 195, 195, 0.9); 
+    transform: translate(1px, -1px);
+    font-size: 1.2em;
+  }
+
+  
