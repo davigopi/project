@@ -1,3 +1,16 @@
+document.addEventListener("DOMContentLoaded", async function() {
+  const params = new URLSearchParams(window.location.search);
+  console.log(params.get('user'))
+  const user = await decrypt(decodeURIComponent(params.get('user')));
+  const permission = await decrypt(decodeURIComponent(params.get('permission')));
+
+  document.getElementById('user').textContent = `Usuário: ${user}`;
+  document.getElementById('permission').textContent = `Permissão: ${permission}`;
+
+  // const newUrl = window.location.pathname;
+  // history.replaceState({}, document.title, newUrl); 
+});
+
 let recursos = [];
 const submitButton = document.querySelector('button[type="submit"]');
 
@@ -139,6 +152,30 @@ function deleteRecurso(index) {
   recursos.splice(index, 1);
   salvarDados();
   exibirRecursos();
+}
+
+async function generateKey() {
+  const rawKey = new TextEncoder().encode('your-secret-key-1234567890123456');
+  return await crypto.subtle.importKey(
+    "raw", 
+    rawKey, 
+    { name: "AES-GCM" }, 
+    false, 
+    ["encrypt", "decrypt"]
+  );
+}
+
+async function decrypt(encryptedText) {
+  const [ivBase64, encryptedBase64] = encryptedText.split('.');
+  const iv = new Uint8Array(atob(ivBase64).split('').map(char => char.charCodeAt(0)));
+  const encryptedContent = new Uint8Array(atob(encryptedBase64).split('').map(char => char.charCodeAt(0)));
+  const key = await generateKey();
+  const decryptedContent = await crypto.subtle.decrypt(
+    { name: "AES-GCM", iv: iv },
+    key,
+    encryptedContent
+  );
+  return new TextDecoder().decode(decryptedContent);
 }
 
 carregarDados();
