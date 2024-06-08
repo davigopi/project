@@ -73,6 +73,8 @@ async function decrypt(encryptedText) {
 async function redirect(user, permission) {
   const encryptUser = encodeURIComponent(await encrypt(user));
   const encryptPermission = encodeURIComponent(await encrypt(permission));
+  // const test = await encrypt('123')
+  // alert(test)
   const url = `gestao_seguranca_estoque.html?user=${encryptUser}&permission=${encryptPermission}`;
   window.location.href = url;
 }

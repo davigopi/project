@@ -9,10 +9,16 @@
 <body>
   <div class="container">
     <header>
-      <p id="user"></p>
-      <p id="permission"></p>
       <h1>Gestão de Recursos</h1>
-      <button id="logoutButton">Sair</button>
+      <p id="userPermissao">
+        <span class="item">
+          <span>Usuário: </span> <span id="user"></span><br>
+        </span>
+        <span class="item">
+          <span>Permissão: </span> <span id="permission"></span>
+        </span>
+      </p>
+      <button id="bntSair">Sair</button>
     </header>
     <form id="formRecurso">
       <input type="text" id="nome" placeholder="Nome do Recurso" required><br>
@@ -23,8 +29,8 @@
     </form>
     <input type="text" id="busca" placeholder="Buscar por nome ou tipo">
     <button id="btnBuscar" onclick="buscarRecurso()">🍳 Buscar</button><br><br>
-    <button id="btnExcluir" onclick="excluirRecursos()">🗑️ Excluir todos Recursos</button><br><br>
-    <button id="btnAdicionar" onclick="adicionarRecursos()">➕ Adicionar Recursos de exemplo</button><br><br>
+    <button id="btnExcluir" onclick="excluirTodosRecursos()">🗑️ Excluir todos Recursos</button><br><br>
+    <button id="btnAdicionar" onclick="adicionarJsonRecursos()">➕ Adicionar Recursos de exemplo</button><br><br>
     <label for="ordenacao">Ordenar por:</label>
     <select id="ordenacao" onchange="classificarRecursos(this.value)">
       <option value="nome">Nome</option>
@@ -35,7 +41,12 @@
     <h2>Lista de Recursos</h2>
     <ul id="listaRecursos"></ul>
   </div>
-
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modal-message"></p>
+    </div>
+  </div>
   <script src="gestao_seguranca_estoque.js"></script>
 </body>
 </html>

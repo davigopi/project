@@ -13,8 +13,8 @@ body {
   width: 300px;
   padding: 20px;
   border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.5);;
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   color: #fff; 
 }
 
@@ -29,8 +29,34 @@ input[type="password"] {
   width: 95%;
   margin-bottom: 10px;
   padding: 8px;
+  background-color: rgba(0, 0, 0, 0.5); /* Ajuste a cor de fundo aqui */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #fff; /* Adiciona a cor do texto */
 }
 
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="text"]:active,
+input[type="password"]:active {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.9) inset !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.9) inset !important;
+  text-fill-color: #fff !important;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #ccc; /* Ajuste a cor do placeholder aqui, se necessário */
+}
 
 #btnEntrar {
   width: 100%;
@@ -44,15 +70,20 @@ input[type="password"] {
 
 #btnEntrar:hover {
   background-color: #121212;
-  box-shadow: -10px 10px 20px rgba(195, 195, 195, 0.9); 
+  box-shadow: 0px -80px 60px rgba(195, 195, 195, 0.9); 
   transform: translate(-3px, -2px);
   font-size: 1.2em;
 }
 
-
 #error-message {
-  color: rgb(255, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 0, 0.8);
+  margin: 10% auto;
+  box-shadow: 0px 0px 105px rgba(255, 255, 255, 1); 
+  border-radius: 8px;
+  width: 100%;
+  animation: slideIn 0.5s;
   text-align: center;
+  font-size: 20px;
   font-weight: bold;
 }
