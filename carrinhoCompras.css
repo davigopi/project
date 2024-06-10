@@ -1,22 +1,16 @@
 body {
     font-family: Arial, sans-serif;
     background-image: url("https://i.im.ge/2024/06/11/K3tDZ6.carrinhoCompras.jpeg");
+    background-size: 100%  auto; 
+    background-position: center;
+    background-repeat: repeat-y;
     margin: 0;
     padding: 0;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    align-items: center
     
 }
 
-/* body {
-    font-family: Arial, sans-serif;
-    
-    margin: 0;
-    padding: 0;
-    display: flex;
-
-    height: 100vh;
-  } */
 
 header {
     background-color: rgba(0, 0, 0, 0.7);
