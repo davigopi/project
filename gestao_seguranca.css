@@ -75,15 +75,53 @@ input[type="password"]::placeholder {
   font-size: 1.2em;
 }
 
-#error-message {
-  color: rgb(0, 0, 0);
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 10s;
+}
+
+.modal-content {
   background-color: rgba(255, 255, 0, 0.8);
-  margin: 10% auto;
+  margin: 15% auto;
+  padding: 20px;
+  /* border: 1px solid #888; */
   box-shadow: 0px 0px 105px rgba(255, 255, 255, 1); 
   border-radius: 8px;
-  width: 100%;
-  animation: slideIn 0.5s;
+  width: 20%;
+  animation: slideIn 5s;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { margin-top: -50%; }
+  to { margin-top: 15%; }
+}
+
+.close {
+  color: #565656;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

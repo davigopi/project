@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestão de Recursos</title>
+  <link rel="icon" href="https://davigopi.github.io/web/batman.ico" type="image/x-icon">
   <link rel="stylesheet" href="gestao_seguranca_estoque.css">
 </head>
 <body>
@@ -12,10 +13,10 @@
       <h1>Gestão de Recursos</h1>
       <p id="userPermissao">
         <span class="item">
-          <span>Usuário: </span> <span id="user"></span><br>
+          <span>Usuário:&nbsp;</span> <span id="user"></span><br>
         </span>
         <span class="item">
-          <span>Permissão: </span> <span id="permission"></span>
+          <span>Permissão:&nbsp;</span> <span id="permission"></span>
         </span>
       </p>
       <button id="bntSair">Sair</button>
@@ -25,12 +26,12 @@
       <input type="text" id="tipo" placeholder="Tipo (Equipamento, Veículo, Dispositivo)" required><br>
       <input type="number" id="quantidade" placeholder="Quantidade" required><br>
       <input type="text" id="status" placeholder="Status (Disponível, Em Uso, Em Manutenção)" required><br>
-      <button type="submit">➕ Adicionar Recurso</button>
+      <button type="submit" id="bntAddEdit">➕ Adicionar Recurso</button>
     </form>
     <input type="text" id="busca" placeholder="Buscar por nome ou tipo">
     <button id="btnBuscar" onclick="buscarRecurso()">🍳 Buscar</button><br><br>
     <button id="btnExcluir" onclick="excluirTodosRecursos()">🗑️ Excluir todos Recursos</button><br><br>
-    <button id="btnAdicionar" onclick="adicionarJsonRecursos()">➕ Adicionar Recursos de exemplo</button><br><br>
+    <button id="btnAdicionar" onclick="adicionarRecursosExemplo()">➕ Adicionar Recursos de exemplo</button><br><br>
     <label for="ordenacao">Ordenar por:</label>
     <select id="ordenacao" onchange="classificarRecursos(this.value)">
       <option value="nome">Nome</option>

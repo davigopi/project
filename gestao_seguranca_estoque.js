@@ -1,5 +1,7 @@
-let recursos = [];
-const submitButton = document.querySelector('button[type="submit"]');
+let recursosList = [];
+let recursosJson = [];
+let imagemTemporaria = '';
+const addEditButton = document.querySelector('button[type="submit"]');
 
 document.addEventListener("DOMContentLoaded", async function () {
   const params = new URLSearchParams(window.location.search);
@@ -10,6 +12,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById('permission').textContent = `${permissiontml}`;
   const newUrl = window.location.pathname;
   history.replaceState({}, document.title, newUrl); 
+  await carregarJsonRecursos();
+  carregarDados();
+  exibirRecursos(recursosList);
 });
 
 document.getElementById("formRecurso").addEventListener("submit", function(event) {
@@ -18,153 +23,76 @@ document.getElementById("formRecurso").addEventListener("submit", function(event
   const tipo = document.getElementById("tipo").value;
   const quantidade = parseInt(document.getElementById("quantidade").value);
   const status = document.getElementById("status").value;
-  adicionarRecurso(nome, tipo, quantidade, status);
+  const recursoEncontrado = recursosJson.find(recurso => recurso.nome.toLowerCase() === nome.toLowerCase());
+  const img = recursoEncontrado ? recursoEncontrado.img : '';
+  adicionarRecurso(nome, tipo, quantidade, status, img);
   document.getElementById("formRecurso").reset();
-  submitButton.textContent = '➕ Adicionar Recurso';
+  addEditButton.textContent = '➕ Adicionar Recurso';
 });
 
 document.getElementById('bntSair').addEventListener('click', function() {
   window.location.href = 'gestao_seguranca.html';
 });
 
-function adicionarRecurso(nome, tipo, quantidade, status) {
-  const condition = permissionUser('samall', 'adicionarRecurso')
-  if (condition) {
-    recursos.push({ nome, tipo, quantidade, status });
-    salvarDados();
-    exibirRecursos();
-    console.log("Recurso adicionado com sucesso!");
-  }
-  document.getElementById('listaRecursos').scrollIntoView({ behavior: 'smooth' });
-}
-
-function buscarRecurso() {
-  const condition = permissionUser('samall', 'buscarRecurso')
-  if (condition) {
-    const termo = document.getElementById("busca").value.toLowerCase();
-    const resultado = recursos.filter(recurso => {
-      return recurso.nome.toLowerCase().includes(termo) || recurso.tipo.toLowerCase().includes(termo);
-    });
-
-    const listaRecursos = document.getElementById("listaRecursos");
-    listaRecursos.innerHTML = "";
-    resultado.forEach(recurso => {
-      const li = document.createElement("li");
-      li.innerHTML = `Nome: ${recurso.nome}, Tipo: ${recurso.tipo}, Quantidade: ${recurso.quantidade}, Status: ${recurso.status}.&nbsp;&nbsp;&nbsp;`;
-      listaRecursos.appendChild(li);
-    });
-  }
-  document.getElementById('listaRecursos').scrollIntoView({ behavior: 'smooth' });
-}
-
-function excluirTodosRecursos() {
-  const condition = permissionUser('full', 'excluirTodosRecursos')
-  if (condition){
-    localStorage.removeItem('recursos');
-    recursos = [];
-    exibirRecursos();
-    console.log("Dados limpos com sucesso!");
-  }
-}
-
-async function adicionarJsonRecursos() {
-  var arqJsonUrl = 'http://localhost:8080/equipment.json';
-  const condition = permissionUser('average', 'adicionarJsonRecursos')
-  if (condition) {
+async function carregarJsonRecursos() {
     try {
-      let response = await fetch(arqJsonUrl);
+      let response = await fetch('http://localhost:8080/equipment.json');
       if (!response.ok) {
         throw new Error('Erro ao carregar o arquivo JSON');
       }
-      let json = await response.json();
-      // Simulando a obtenção dos dados do usuário
-      for (var i = 0; i < json.length; i++) {
-        var equipment = json[i];
-        var nome = equipment.nome
-        var tipo = equipment.tipo
-        var quantidade = equipment.quantidade
-        var status = equipment.status
-        console.log(nome, tipo, quantidade, status)
-        adicionarRecurso(nome, tipo, quantidade, status)
-      }
+      recursosJson = await response.json();
     } catch (error) {
-      let text = 'Erro ao carregar dados dos equipamentos'
-      console.error(text, error);
+      console.error('Erro ao carregar dados dos equipamentos', error);
     }
-  } 
+  }
+
+async function adicionarRecurso(nome, tipo, quantidade, status, img) {
+  const condition = await permissionUser('samall')
+  if (condition) {
+    recursosList.push({ nome, tipo, quantidade, status, img });
+    salvarDados();
+    exibirRecursos(recursosList);
+    console.log("Recurso adicionado com sucesso!");
+    const listaRecursos = document.getElementById('listaRecursos');
+    if (listaRecursos.lastElementChild) {
+      listaRecursos.lastElementChild.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
+
+async function buscarRecurso() {
+  const condition = await permissionUser('samall')
+  if (condition) {
+    const termo = document.getElementById("busca").value.toLowerCase();
+    const resultado = recursosList.filter(recurso => {
+      return recurso.nome.toLowerCase().includes(termo) || recurso.tipo.toLowerCase().includes(termo);
+    });
+    exibirRecursos(resultado)
+  }
   document.getElementById('listaRecursos').scrollIntoView({ behavior: 'smooth' });
 }
 
-function editRecurso(index) {
-  const condition = permissionUser('samall', 'editRecurso')
-  if (condition) {
-    const recurso = recursos[index];
-    document.getElementById("nome").value = recurso.nome;
-    document.getElementById("tipo").value = recurso.tipo;
-    document.getElementById("quantidade").value = recurso.quantidade;
-    document.getElementById("status").value = recurso.status;
-    submitButton.textContent = '✏️ Editar Recurso';
-    recursos.splice(index, 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-}
-
-function excluirRecurso(index) {
-  const condition = permissionUser('average', 'excluirRecurso')
-  if (condition) {
-    recursos.splice(index, 1);
-    salvarDados();
-    exibirRecursos();
-  }
-}
-
-function classificarRecursos(criterio) {
-  const condition = permissionUser('samall', 'classificarRecursos')
-  if (condition) {
-    recursos.sort((a, b) => {
-      if (a[criterio] < b[criterio]) return -1;
-      if (a[criterio] > b[criterio]) return 1;
-      return 0;
-    });
-    exibirRecursos();
-  }
-}
-
-function listarRecursos() {
-  const condition = permissionUser('samall', 'listarRecursos')
-  if (condition) {
-    console.log("Lista de Recursos:");
-    recursos.forEach(recurso => {
-      console.log(`Nome: ${recurso.nome}, Tipo: ${recurso.tipo}, Quantidade: ${recurso.quantidade}, Status: ${recurso.status}`);
-    });
-  }
-}
-
-function salvarDados() {
-  const condition = permissionUser('samall', 'salvarDados')
-  if (condition) {
-    localStorage.setItem('recursos', JSON.stringify(recursos));
-    console.log("Dados salvos com sucesso!");
-  }
-}
-
-function carregarDados() {
-  const data = localStorage.getItem('recursos');
-  if (data) {
-    recursos = JSON.parse(data);
-    console.log("Dados carregados com sucesso!");
-  } else {
-    console.log("Não há dados salvos.");
-  }
-}
-
-function exibirRecursos() {
+function exibirRecursos(recursosExibir) {
   const listaRecursos = document.getElementById("listaRecursos");
   listaRecursos.innerHTML = "";
-  recursos.forEach((recurso, index) => {
+  recursosExibir.forEach((recurso, index) => {
     const li = document.createElement("li");
-    li.innerHTML = `Nome: ${recurso.nome}, Tipo: ${recurso.tipo}, Quantidade: ${recurso.quantidade}, Status: ${recurso.status}.`;
+    const img = document.createElement("img");
+    img.alt = recurso.nome;
+    img.classList.add("img-recurso");
+    if (recurso.img) {
+      img.src = recurso.img;
+    } else {
+      img.src = "https://i.im.ge/2024/06/10/KxxCvx.imgNot.png";
+    }
+    img.onerror = () => {
+      img.src = "https://i.im.ge/2024/06/10/KxxCvx.imgNot.png";
+    };      
+      
+    li.appendChild(img);
 
+    li.innerHTML += `Nome: ${recurso.nome}, Tipo: ${recurso.tipo}, Quantidade: ${recurso.quantidade}, Status: ${recurso.status}.&nbsp;&nbsp;&nbsp;`;
+    
     const editButton = document.createElement('button');
     editButton.textContent = '✏️';
     editButton.classList.add('edit');
@@ -181,22 +109,112 @@ function exibirRecursos() {
   });
 }
 
-async function permissionUser(permission_func, func) {
-  const permission = await document.getElementById('permission').textContent
+async function excluirTodosRecursos() {
+  const condition = await permissionUser('full')
+  if (condition){
+    localStorage.removeItem('recursos');
+    recursosList = [];
+    exibirRecursos(recursosList);
+    console.log("Dados limpos com sucesso!");
+  }
+}
+
+async function adicionarRecursosExemplo() {
+  const condition = await permissionUser('average');
+  if (condition) {
+    try {
+      await carregarJsonRecursos();
+      for (var i = 0; i < recursosJson.length; i++) {
+        var equipment = recursosJson[i];
+        var nome = equipment.nome;
+        var tipo = equipment.tipo;
+        var quantidade = equipment.quantidade;
+        var status = equipment.status;
+        var img = equipment.img;
+        console.log(nome, tipo, quantidade, status, img);
+        adicionarRecurso(nome, tipo, quantidade, status, img);
+      }
+    } catch (error) {
+      let text = 'Erro ao carregar dados dos equipamentos';
+      console.error(text, error);
+    }
+    document.getElementById('listaRecursos').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+async function editRecurso(index) {
+  console.log('editRecurso')
+  const condition = await permissionUser('samall')
+  console.log(condition)
+  if (condition) {
+    const recurso = recursosList[index];
+    document.getElementById("nome").value = recurso.nome;
+    document.getElementById("tipo").value = recurso.tipo;
+    document.getElementById("quantidade").value = recurso.quantidade;
+    document.getElementById("status").value = recurso.status;
+    addEditButton.textContent = '✏️ Editar Recurso';
+    recursosList.splice(index, 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+async function excluirRecurso(index) {
+  const condition = await permissionUser('average')
+  if (condition) {
+    recursosList.splice(index, 1);
+    salvarDados();
+    exibirRecursos(recursosList);
+  }
+}
+
+async function classificarRecursos(criterio) {
+  const condition = await permissionUser('samall')
+  if (condition) {
+    recursosList.sort((a, b) => {
+      if (a[criterio] < b[criterio]) return -1;
+      if (a[criterio] > b[criterio]) return 1;
+      return 0;
+    });
+    exibirRecursos(recursosList);
+  }
+}
+
+async function salvarDados() {
+  const condition = await permissionUser('samall')
+  if (condition) {
+    localStorage.setItem('recursos', JSON.stringify(recursosList));
+    console.log("Dados salvos com sucesso!");
+  }
+}
+
+function carregarDados() {
+  const data = localStorage.getItem('recursos');
+  if (data) {
+    recursosList = JSON.parse(data);
+    console.log("Dados carregados com sucesso!");
+  } else {
+    console.log("Não há dados salvos.");
+  }
+}
+
+async function permissionUser(permission_func) {
+  const permissao = await document.getElementById('permission').textContent
+  const usuario = await document.getElementById('user').textContent
+  console.log("Valores usuário:", usuario, ' e permissão:', permissao);
   let text = ''
   switch (permission_func) {
     case 'full':
-      if (permission === 'Administrador') {
+      if (['Administrador'].includes(permissao)) {
         return true
       }
       break
     case 'average':
-      if (permission === 'Administrador' || permission === 'Gerente') {
+      if (['Administrador', 'Gerente'].includes(permissao)) {
         return true
       }
       break
     case 'samall':
-      if (permission === 'Administrador' || permission === 'Gerente' || permission === 'Funcionário') {
+      if (['Administrador', 'Gerente', 'Funcionário'].includes(permissao)) {
         return true
       }
       break
@@ -204,12 +222,13 @@ async function permissionUser(permission_func, func) {
       console.log(`A permissão não foi definida corretamente: ${permission_func}`)
       return false
   }
-  user = document.getElementById('user').textContent;
-  if (user) {
-    text += `O usuário ${user} não possui autorização para realizar esta operação. <br>
-    A sua permissão é restrita ao nível de ${permission}. `
+
+  
+  if (usuario) {
+    text += `O usuário ${usuario} não possui autorização para realizar esta operação. <br>
+    A sua permissão é restrita ao nível de ${permissao}. `
   } else{
-    text += `Suas permissões foram revogadas. Por favor, reconecte-se. ${func}`
+    text += `Suas permissões foram revogadas. Por favor, saia e reconecte-se.`
   }
   openModal(text)
   return false
@@ -239,11 +258,11 @@ async function decrypt(encryptedText) {
   return new TextDecoder().decode(decryptedContent);
 }
 
-
 function openModal(message) {
   document.getElementById("modal-message").innerHTML = message;
   document.getElementById("myModal").style.display = "block";
 }
+
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
@@ -258,5 +277,6 @@ window.onclick = function(event) {
   }
 };
 
+carregarJsonRecursos(); 
 carregarDados();
-exibirRecursos();
+exibirRecursos(recursosList);

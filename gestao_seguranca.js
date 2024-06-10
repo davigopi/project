@@ -13,26 +13,22 @@ document.getElementById('login-form').addEventListener('submit', async function(
     var json = arqJson.users.find(u => u.username === user);
     const password2 = await decrypt(json.password);
     if (json && (password === password2)) {
-      // text = 'Autenticacao correta '
-      // let encryptedPermission = await encrypt(json.permission);
       const permission = await decrypt(json.permission);
       redirect(json.username, permission);
     } else {
       let text = 'Usuário ou senha inválidos.'
-      document.getElementById('error-message').textContent = text;
+      openModal(text)
     }
   } catch (error) {
-    let text = 'Erro ao carregar dados de usuários! <br><br>'
-    text += 'Verifique a conexão com o banco de dados usando Node.js. <br><br>'
-    text += 'O gestao_seguranca_server tem que esta rodando para simular '
-    text += 'banco de dados.'
-    document.getElementById('error-message').innerHTML = text;
+    let text = 'Erro ao carregar os dados dos usuários! <br><br>'
+    text += 'Por favor, verifique a conexão com o banco de dados utilizando Node.js. <br><br>'
+    text += 'O serviço gestao_seguranca_server deve estar em execução para simular o banco de dados.'
+    openModal(text)
     console.error('Erro:', error);
   }
 });
   
 async function generateKey() {
-  // Ensure the key is 32 bytes (256 bits)
   const rawKey = new TextEncoder().encode('your-secret-key-1234567890123456');
   return await crypto.subtle.importKey(
     "raw", 
@@ -73,9 +69,25 @@ async function decrypt(encryptedText) {
 async function redirect(user, permission) {
   const encryptUser = encodeURIComponent(await encrypt(user));
   const encryptPermission = encodeURIComponent(await encrypt(permission));
-  // const test = await encrypt('123')
-  // alert(test)
   const url = `gestao_seguranca_estoque.html?user=${encryptUser}&permission=${encryptPermission}`;
   window.location.href = url;
 }
-  
+
+function openModal(message) {
+  document.getElementById("modal-message").innerHTML = message;
+  document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+document.getElementsByClassName("close")[0].onclick = function() {
+  closeModal();
+};
+
+window.onclick = function(event) {
+  if (event.target == document.getElementById("myModal")) {
+    closeModal();
+  }
+};

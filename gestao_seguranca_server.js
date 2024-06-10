@@ -3,11 +3,9 @@
 
 const express = require('express');
 const fetch = require('node-fetch');
-
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Permitir solicitações de qualquer origem (CORS)
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   next();
@@ -38,4 +36,3 @@ app.get('/equipment.json', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
-
