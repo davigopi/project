@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="carrinhoCompras.css">
+</head>
+<body>
+    <header>
+        <h1>Carrinho de Compras</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="login-link">Conecte-se</a></li>
+                <li><a href="#" id="signup-link">Inscreva-se</a></li>
+                <li><button id="logout-button" style="display: none;">Sair</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="product-catalog">
+            <h2>Catálogo de Produtos</h2>
+            <div id="products"></div>
+        </section>
+
+        <section id="shopping-cart">
+            <h2>Carrinho de Compras</h2>
+            <div id="cart-summary"></div>
+            <button id="checkout-button">Finalizar Compra</button>
+        </section>
+    </main>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="username" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Inscrição</h2>
+            <form id="signup-form">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" required>
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+                <button type="submit">Inscreva-se</button>
+            </form>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="modal-message"></p>
+        </div>
+      </div>
+    <script src="carrinhoCompras.js"></script>
+</body>
+</html>
