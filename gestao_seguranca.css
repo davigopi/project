@@ -50,7 +50,7 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.9) inset !important;
   -webkit-text-fill-color: #fff !important;
   box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.9) inset !important;
-  text-fill-color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 input[type="text"]::placeholder,
