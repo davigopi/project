@@ -1,0 +1,53 @@
+________________________________________________________________________________
+Motivo para usar NODE.js:
+
+Devido ao bloqueio imposto pelos navegadores ao tentar obter dados JSON 
+diretamente da web, foi necessário instalar o Node.js para garantir o correto 
+funcionamento do sistema. Com o Node.js, é possível redirecionar as requisições 
+para o site na web de forma segura.
+
+Nota: Por questões de segurança, os dados de usuários e senhas não foram 
+incluídos diretamente no arquivo gestao_seguranca.js.
+________________________________________________________________________________
+Instalação:
+
+Para instalar o Node.js e os pacotes necessários, execute os seguintes comandos 
+no terminal:
+# npm init -y
+# npm install express node-fetch
+________________________________________________________________________________
+Execução do arquivo Node.js:
+
+Para iniciar o servidor Node.js, execute o arquivo gestao_seguranca_server.js. 
+Este arquivo irá configurar o servidor e ativar o Node.js.
+# gestao_seguranca_server.js
+________________________________________________________________________________
+Funcionamento do Programa:
+
+Após a execução do servidor, abra o arquivo gestao_seguranca.js no navegador. 
+Este arquivo irá se comunicar com o servidor Node.js para obter os dados 
+necessários.
+________________________________________________________________________________
+Usuários e Senhas:
+
+Usuário: batman
+Senha: 123
+Permissão: Administrador
+
+Usuário: alfred
+Senha: 12
+Permissão: Gerente
+
+Usuário: robin
+Senha: 1
+Permissão: Funcionário
+________________________________________________________________________________
+Considerações Técnicas Adicionais:
+
+Express: Utilizamos o Express para criar um servidor HTTP robusto e flexível.
+Node-fetch: A biblioteca node-fetch é utilizada para fazer requisições HTTP, 
+simulando a função fetch dos navegadores em ambientes Node.js.
+Segurança: É importante manter as credenciais de usuários fora do código-fonte 
+sempre que possível, utilizando variáveis de ambiente ou sistemas de 
+gerenciamento de configuração segura.
+________________________________________________________________________________
